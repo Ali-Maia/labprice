@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,5 +27,7 @@
     "swagger-jsdoc": "^6.2.8",
     "uuid": "^9.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cypress": "^13.0.0"
+  }
 }
