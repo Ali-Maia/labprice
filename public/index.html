@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Maker Pricing</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">⚙</div>
+          <div>
+            <strong>LabPrice</strong>
+            <span>precificação maker</span>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="dashboard.html">Painel</a>
+          <a href="quote.html">Orçamento</a>
+          <a href="products.html">Catálogo</a>
+          <a href="login.html" data-auth="logged-out" class="nav-pill primary">Entrar</a>
+          <a href="register.html" data-auth="logged-out" class="nav-pill ghost">Criar conta</a>
+          <span class="nav-pill hidden" data-auth="logged-in" data-user-name></span>
+          <button class="nav-pill ghost hidden" data-auth="logged-in" data-logout>Sair</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-card">
+            <span class="kicker">Mundo maker • impressão 3D • catálogo inteligente</span>
+            <h1>Orçamentos com cara de oficina e precisão de laboratório.</h1>
+            <p>
+              O LabPrice calcula custos de impressão 3D, protege a margem de lucro e transforma orçamentos em produtos salvos no catálogo.
+              A interface foi pensada com visual maker: escura, técnica e com destaque dourado para a identidade da marca.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="quote.html">Calcular orçamento</a>
+              <a class="btn btn-secondary" href="dashboard.html">Abrir painel</a>
+            </div>
+          </div>
+          <div class="hero-aside">
+            <div class="metric highlight">
+              <div class="icon">⚡</div>
+              <small>Fluxo</small>
+              <strong>Calcular → Salvar → Gerenciar</strong>
+              <p>O front conversa diretamente com a API do projeto via fetch e JWT.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Funcionalidades principais</h2>
+              <p>Atalhos para as páginas que cobrem cadastro, cálculo, catálogo e edição de produtos.</p>
+            </div>
+          </div>
+
+          <div class="grid features">
+            <article class="card">
+              <div class="icon">⌂</div>
+              <h3>Painel</h3>
+              <p>Resumo rápido com contadores e último produto salvo.</p>
+            </article>
+            <article class="card">
+              <div class="icon">⇄</div>
+              <h3>Orçamento</h3>
+              <p>Calcula material, energia, depreciação, risco e preço final.</p>
+            </article>
+            <article class="card">
+              <div class="icon">▣</div>
+              <h3>Catálogo</h3>
+              <p>Lista, detalha, edita e exclui produtos cadastrados.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="line"></div>
+        <p>LabPrice • front-end maker com integração direta à API</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

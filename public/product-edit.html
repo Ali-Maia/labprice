@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Editar produto</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html"><div class="brand-mark">⚙</div><div><strong>LabPrice</strong><span>precificação maker</span></div></a>
+        <nav class="nav">
+          <a href="products.html">Catálogo</a>
+          <a href="quote.html">Orçamento</a>
+          <a href="login.html" data-auth="logged-out" class="nav-pill primary">Entrar</a>
+          <button class="nav-pill ghost hidden" data-auth="logged-in" data-logout>Sair</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="hero-card">
+          <span class="kicker">Edição</span>
+          <h1>Atualize nome e custos da peça.</h1>
+          <p>Se alterar qualquer custo, a API recalcula automaticamente o preço final.</p>
+        </div>
+
+        <div class="form-card" style="margin-top:18px;">
+          <h2>Editar produto</h2>
+          <form id="editProductForm" class="form-grid">
+            <div class="field">
+              <label for="name">Nome</label>
+              <input class="input" id="name" name="name" type="text" required>
+            </div>
+            <div class="grid two">
+              <div class="field"><label for="gramsUsed">Gramas usadas</label><input class="input" id="gramsUsed" name="gramsUsed" type="number" step="0.01" min="0" required></div>
+              <div class="field"><label for="costPerKg">Custo por kg</label><input class="input" id="costPerKg" name="costPerKg" type="number" step="0.01" min="0" required></div>
+            </div>
+            <div class="grid two">
+              <div class="field"><label for="powerWatts">Potência (W)</label><input class="input" id="powerWatts" name="powerWatts" type="number" step="0.01" min="0" required></div>
+              <div class="field"><label for="timeHours">Tempo de impressão (h)</label><input class="input" id="timeHours" name="timeHours" type="number" step="0.01" min="0" required></div>
+            </div>
+            <div class="grid two">
+              <div class="field"><label for="tarifaKwh">Tarifa kWh</label><input class="input" id="tarifaKwh" name="tarifaKwh" type="number" step="0.01" min="0" required></div>
+              <div class="field"><label for="markupPercentage">Markup (%)</label><input class="input" id="markupPercentage" name="markupPercentage" type="number" step="0.01" min="0" max="100" required></div>
+            </div>
+            <div class="grid two">
+              <div class="field"><label for="additionalCosts">Custos adicionais</label><input class="input" id="additionalCosts" name="additionalCosts" type="number" step="0.01" min="0" value="0"></div>
+              <div class="field"><label for="packaging">Embalagem</label><input class="input" id="packaging" name="packaging" type="number" step="0.01" min="0" value="0"></div>
+            </div>
+            <div class="field"><label for="platformFeePercentage">Taxa da plataforma (%)</label><input class="input" id="platformFeePercentage" name="platformFeePercentage" type="number" step="0.01" min="0" max="99" value="0"></div>
+
+            <hr class="sep">
+            <label class="switch"><input type="checkbox" id="enableDepreciation" name="enableDepreciation"> Ativar depreciação</label>
+            <div class="grid two">
+              <div class="field"><label for="machineValue">Valor da máquina</label><input class="input" id="machineValue" name="machineValue" type="number" step="0.01" min="0"></div>
+              <div class="field"><label for="lifeHours">Vida útil (h)</label><input class="input" id="lifeHours" name="lifeHours" type="number" step="0.01" min="0"></div>
+            </div>
+            <label class="switch"><input type="checkbox" id="enableRiskTax" name="enableRiskTax"> Ativar taxa de risco</label>
+            <div class="field"><label for="failurePercentage">Falha estimada (%)</label><input class="input" id="failurePercentage" name="failurePercentage" type="number" step="0.01" min="0" max="100"></div>
+            <label class="switch"><input type="checkbox" id="enablePostProcessing" name="enablePostProcessing"> Ativar pós-processamento</label>
+            <div class="grid two">
+              <div class="field"><label for="postTimeHours">Tempo de pós (h)</label><input class="input" id="postTimeHours" name="postTimeHours" type="number" step="0.01" min="0"></div>
+              <div class="field"><label for="hourlyRate">Taxa/hora</label><input class="input" id="hourlyRate" name="hourlyRate" type="number" step="0.01" min="0"></div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Salvar alterações</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

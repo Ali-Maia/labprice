@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Catálogo</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html"><div class="brand-mark">⚙</div><div><strong>LabPrice</strong><span>precificação maker</span></div></a>
+        <nav class="nav">
+          <a href="quote.html">Novo orçamento</a>
+          <a href="dashboard.html">Painel</a>
+          <a href="login.html" data-auth="logged-out" class="nav-pill primary">Entrar</a>
+          <button class="nav-pill ghost hidden" data-auth="logged-in" data-logout>Sair</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="hero-card">
+          <span class="kicker">Catálogo de produtos</span>
+          <h1>Produtos gerados a partir dos orçamentos.</h1>
+          <p>Veja o resumo financeiro, abra o detalhamento, altere a peça ou exclua registros.</p>
+        </div>
+        <div id="productsList" class="list" style="margin-top:18px;"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Entrar</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html"><div class="brand-mark">⚙</div><div><strong>LabPrice</strong><span>precificação maker</span></div></a>
+        <nav class="nav">
+          <a href="index.html">Início</a>
+          <a href="register.html">Criar conta</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container grid two" style="align-items:center;">
+        <div class="hero-card">
+          <span class="kicker">Acesso seguro</span>
+          <h1 style="font-size:2.4rem;">Entre no painel e continue os cálculos.</h1>
+          <p>Use seu email e senha para receber o token JWT e acessar as funções protegidas da API.</p>
+        </div>
+
+        <div class="form-card">
+          <h2>Entrar</h2>
+          <form id="loginForm" class="form-grid">
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" required>
+            </div>
+            <div class="field">
+              <label for="password">Senha</label>
+              <input class="input" id="password" name="password" type="password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Entrar</button>
+          </form>
+          <p class="help">Não tem conta? <a href="register.html" style="color:var(--gold-2);font-weight:700;">Cadastre-se</a>.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

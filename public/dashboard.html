@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Dashboard</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html"><div class="brand-mark">⚙</div><div><strong>LabPrice</strong><span>precificação maker</span></div></a>
+        <nav class="nav">
+          <a href="quote.html">Orçamento</a>
+          <a href="products.html">Catálogo</a>
+          <a href="login.html" data-auth="logged-out" class="nav-pill primary">Entrar</a>
+          <button class="nav-pill ghost hidden" data-auth="logged-in" data-logout>Sair</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="hero-card">
+          <span class="kicker">Painel operacional</span>
+          <h1 id="dashboardGreeting">Bem-vindo</h1>
+          <p>Resumo do catálogo e atalhos para as operações do dia a dia.</p>
+        </div>
+        <div id="dashboardContent" style="margin-top:18px;"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

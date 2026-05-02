@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabPrice | Cadastro</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html"><div class="brand-mark">⚙</div><div><strong>LabPrice</strong><span>precificação maker</span></div></a>
+        <nav class="nav">
+          <a href="index.html">Início</a>
+          <a href="login.html">Entrar</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container grid two" style="align-items:center;">
+        <div class="hero-card">
+          <span class="kicker">Novo usuário</span>
+          <h1 style="font-size:2.4rem;">Crie sua conta para salvar produtos no catálogo.</h1>
+          <p>O cadastro libera acesso ao fluxo protegido da API e às rotas de produto.</p>
+        </div>
+
+        <div class="form-card">
+          <h2>Cadastro</h2>
+          <form id="registerForm" class="form-grid">
+            <div class="field">
+              <label for="username">Username</label>
+              <input class="input" id="username" name="username" minlength="3" maxlength="20" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" required>
+            </div>
+            <div class="field">
+              <label for="password">Senha</label>
+              <input class="input" id="password" name="password" type="password" minlength="6" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+          </form>
+          <p class="help">Já tem conta? <a href="login.html" style="color:var(--gold-2);font-weight:700;">Entre aqui</a>.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
