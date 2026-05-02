@@ -1,55 +1,84 @@
-# LabPrice - API de Precificação para Impressão 3D
+# LabPrice — API de Precificação para Impressão 3D
 
-## Visão Geral
-O **LabPrice** é uma API desenvolvida para automatizar o cálculo de custos e a precificação de produtos de impressão 3D. O sistema permite transformar orçamentos técnicos em produtos de estoque, considerando variáveis de material, energia, depreciação e taxas de mercado.
+LabPrice é uma API RESTful (Node.js + Express) que automatiza o cálculo de custos e a gestão de um catálogo de produtos de impressão 3D. Ela transforma parâmetros técnicos (gramas, tempo, potência, etc.) em um orçamento detalhado e permite salvar esse orçamento como um produto no catálogo.
 
----
-
-## Regras de Negócio e Segurança
-
-### 1. Autenticação e Usuários
-* **Cadastro de Usuário:**
-    * `username`: Obrigatório, sem espaços ou caracteres especiais (Regex: `^[a-zA-Z0-9]+$`).
-    * `email`: Deve ser um e-mail válido.
-    * `password`: Mínimo de 6 caracteres. Proibido o uso de caracteres invisíveis (*Unicode whitespace/Zero-width*).
-* **Segurança:** Implementação de **JWT (JSON Web Token)** para persistência de sessão.
-* **Autorização:** A consulta de usuários é restrita a perfis com permissões administrativas.
-* **Persistência:** Banco de dados em memória local (Array/Map) para esta versão.
+Principais objetivos:
+- Calcular custo real por peça considerando material, energia, depreciação, risco e pós-processamento;
+- Proteger a margem de lucro frente a taxas de plataforma (marketplaces);
+- Persistir orçamentos validados como produtos em um catálogo simples em memória;
+- Documentar a API com Swagger para testes interativos.
 
 ---
 
-## Motor de Cálculo (Lógica de Precificação)
+## Como funciona (visão rápida)
 
-Para todos os cálculos, o tempo é convertido para valor decimal:
-`Tempo (T) = Horas + (Minutos / 60)`
-
-### Fórmulas Base
-
-1.  **Custo de Material ($C_{mat}$):**
-    $$C_{mat} = (Peso_{g} / 1000) \times Custo_{kg}$$
-
-2.  **Custo de Energia ($C_{ene}$):**
-    $$C_{ene} = (Potência_{W} / 1000) \times T_{impressão} \times Tarifa_{kWh}$$
-
-3.  **Depreciação de Máquina ($C_{dep}$) - *Opcional*:**
-    $$C_{dep} = (Valor_{máquina} / VidaÚtil_{horas}) \times T_{impressão}$$
-
-4.  **Taxa de Falha/Risco ($C_{risco}$) - *Opcional*:**
-    $$C_{risco} = (C_{mat} + C_{ene} + C_{dep}) \times (\%Falha / 100)$$
-
-5.  **Pós-Processamento ($C_{pós}$):**
-    $$C_{pós} = T_{trabalho} \times TaxaHorária$$
-
-6.  **Custo de Produção ($C_{prod}$):**
-    $$C_{prod} = C_{mat} + C_{ene} + C_{dep} + C_{risco} + C_{pós} + CustosAdicionais + Embalagem$$
-
-### Preço Final e Lucro
-
-* **Markup (Lucro Desejado):** Aplicado sobre o custo total de produção.
-* **Taxa de Envio/Venda:** Caso haja porcentagem de plataforma (ex: marketplace), o cálculo de preço final utiliza a fórmula de margem:
-    $$Preço_{venda} = \frac{C_{prod} + Lucro}{1 - (\%TaxaPlataforma / 100)}$$
+- Endpoints de autenticação (cadastro/login) geram tokens JWT para proteger rotas sensíveis.
+- O motor de precificação recebe parâmetros técnicos e aplica as fórmulas (material, energia, depreciação, risco, pós-processamento, markup e taxa de plataforma) retornando um objeto detalhado com custos e preço final.
+- Um orçamento validado pode ser convertido em produto via `POST /products`; produtos são armazenados em memória e carregam o histórico completo do cálculo.
+- Atualizações em variáveis de custo acionam o recálculo automático do produto.
 
 ---
+
+## Rodando o projeto (passo a passo)
+
+Pré-requisitos:
+- Node.js 14+ e npm instalado.
+
+1. Abra um terminal e instale dependências:
+
+```bash
+cd "d:\workspace\Mentoria Testes\turma3\portfolio\labprice"
+npm install
+```
+
+2. Inicie o servidor:
+
+```bash
+npm start
+# ou (modo dev, requer Node com "--watch")
+npm run dev
+```
+
+3. Acesse a documentação interativa (Swagger):
+
+```
+http://localhost:3000/api-docs
+```
+
+4. Testes / exemplos:
+- Use o arquivo `EXEMPLOS_TESTE.sh` (curl) ou o Swagger UI para executar: registro, login, calcular orçamento, criar/listar/atualizar/excluir produtos.
+
+---
+
+## Principais endpoints
+
+- `POST /auth/register` — Cadastrar administrador (username alfanumérico, email, senha ≥6)
+- `POST /auth/login` — Login e geração de token JWT
+- `GET /users` — Listar usuários (protegido)
+- `POST /quote/calculate` — Calcular orçamento (retorna detalhamento, não persiste)
+- `POST /products` — Converter orçamento em produto (protegido)
+- `GET /products` — Listar produtos (protegido)
+- `GET /products/:id` — Detalhar produto (protegido)
+- `PUT /products/:id` — Atualizar produto (recalcula automaticamente) (protegido)
+- `DELETE /products/:id` — Deletar produto (protegido)
+
+---
+
+## Configurações e variáveis
+
+- `PORT` — Porta do servidor (padrão: `3000`).
+- `JWT_SECRET` — Se não definido, a aplicação usa um secret de desenvolvimento; **defina em produção**.
+
+Arquivo de configuração principal: `src/server.js` e `src/middleware/authMiddleware.js`.
+
+---
+
+## Observações
+
+- O banco de dados é em memória: todos os dados serão perdidos ao reiniciar o servidor (adequado para MVP/desenvolvimento). Para produção, é recomendado migrar para PostgreSQL ou MongoDB.
+- A documentação Swagger está disponível em `/api-docs` e serve de guia para todos os parâmetros e respostas.
+
+ ---
 
 ## Fluxo de Trabalho (Endpoints)
 
