@@ -17,6 +17,43 @@ Principais objetivos:
 - Um orçamento validado pode ser convertido em produto via `POST /products`; produtos são armazenados em memória e carregam o histórico completo do cálculo.
 - Atualizações em variáveis de custo acionam o recálculo automático do produto.
 
+## Documentação do projeto
+
+### Casos de teste da API
+
+- [Resumo geral dos testes](docs/casos_de_teste.md)
+- [Autenticação](docs/casos%20de%20testes/API/api_autenticacao.md)
+- [Precificação](docs/casos%20de%20testes/API/api_precificacao.md)
+- [Catálogo](docs/casos%20de%20testes/API/api_catalogo.md)
+
+### Casos de teste do front-end
+
+- [Índice front-end consolidado](docs/casos%20de%20testes/e2e/casos_de_teste_front.md)
+- [Autenticação e Sessão](docs/casos%20de%20testes/e2e/auth.md)
+- [Precificação e Cálculos](docs/casos%20de%20testes/e2e/quote.md)
+- [Salvamento de Catálogo](docs/casos%20de%20testes/e2e/salvar_catalogo.md)
+- [Visualização](docs/casos%20de%20testes/e2e/visualizacao.md)
+- [Atualização de Produtos](docs/casos%20de%20testes/e2e/atualizacao.md)
+- [Exclusão de Produtos](docs/casos%20de%20testes/e2e/exclusao.md)
+
+### Testes automatizados com Cypress
+
+O projeto pode ser testado com Cypress tanto no front-end quanto na API.
+
+Sugestão de organização:
+
+- `cypress/e2e/front-end/` — testes de UI para login, orçamento, catálogo e edição;
+- `cypress/e2e/api/` — testes de integração usando `cy.request()` para autenticação, cálculo e catálogo.
+
+Comandos usuais:
+
+```bash
+npx cypress open
+npx cypress run
+```
+
+Antes de rodar os testes, mantenha a aplicação disponível em `http://localhost:3000`.
+
 ---
 
 ## Rodando o projeto (passo a passo)
