@@ -2,16 +2,30 @@ describe('API - Catálogo', () => {
   let authToken;
   let produtoId;
 
+    const uniqueUser = () => {
+		const suffix = Date.now();
+
+		return {
+			username: `admin${suffix}`,
+			email: `admin${suffix}@labprice.com`,
+			password: 'senha123'
+		};
+	};
+
+  let validUser;
+
   before(() => {
+    validUser = uniqueUser();
+
     cy.request('POST', '/auth/register', {
-      username: `cataloguser`,
-      email: `cataloguser@labprice.com`,
-      password: 'senha123'
+      username: validUser.username,
+      email: validUser.email,
+      password: validUser.password
     });
 
     cy.request('POST', '/auth/login', {
-      email: `cataloguser@labprice.com`,
-      password: 'senha123'
+      email: validUser.email,
+      password: validUser.password
     }).then((response) => {
       authToken = response.body.token;
     });
