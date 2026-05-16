@@ -1,0 +1,44 @@
+name: Executar Testes
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Usar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes Cypress
+        run: npm run cy:run
+
+      - name: Upload de artefatos (screenshots de falhas)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots-node-${{ matrix.node-version }}
+          path: cypress/screenshots
+          retention-days: 7
+
+      - name: Upload de vídeos de testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos-node-${{ matrix.node-version }}
+          path: cypress/videos
+          retention-days: 7
