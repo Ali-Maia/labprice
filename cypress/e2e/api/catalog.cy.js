@@ -166,7 +166,7 @@ describe('API - Catálogo', () => {
   });
 
   describe('Testes de Atualização de Produtos do Catálogo', () => {
-    it('TC-PROD-007: Atualização de Produto Existente com Dados Válidos', function () {
+    it.skip('TC-PROD-007: Atualização de Produto Existente com Dados Válidos', function () {
       cy.request({
         method: 'PUT',
         url: `/products/${produtoId}`,

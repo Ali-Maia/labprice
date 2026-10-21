@@ -42,8 +42,9 @@ O projeto pode ser testado com Cypress tanto no front-end quanto na API.
 
 Sugestão de organização:
 
-- `cypress/e2e/front-end/` — testes de UI para login, orçamento, catálogo e edição;
+- `cypress/e2e/frontend/` — testes de UI para autenticação, orçamento, dashboard, catálogo, detalhamento e edição;
 - `cypress/e2e/api/` — testes de integração usando `cy.request()` para autenticação, cálculo e catálogo.
+- `cypress/support/commands.js` — comandos reutilizáveis para autenticar usuários e criar produtos de teste.
 
 Comandos usuais:
 
@@ -53,6 +54,11 @@ npx cypress run
 ```
 
 Antes de rodar os testes, mantenha a aplicação disponível em `http://localhost:3000`.
+
+Os specs de front-end cobrem, entre outros fluxos, estados vazios, navegação para detalhes,
+tratamento de produto inexistente, carregamento do formulário, validação de campos obrigatórios,
+recálculo de custos e confirmação/cancelamento de exclusão. O caso de atualização do nome do
+produto permanece pendente enquanto o bug correspondente da aplicação não for corrigido.
 
 ---
 
