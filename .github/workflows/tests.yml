@@ -25,6 +25,18 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Iniciar servidor
+        run: |
+          npm start > server.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://localhost:3000/health > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat server.log
+          exit 1
+
       - name: Executar testes Cypress
         run: npm run cy:run
 
