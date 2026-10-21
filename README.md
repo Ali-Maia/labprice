@@ -10,7 +10,7 @@ Principais objetivos:
 
 ---
 
-## Como funciona (visão rápida)
+## Como funciona
 
 - Endpoints de autenticação (cadastro/login) geram tokens JWT para proteger rotas sensíveis.
 - O motor de precificação recebe parâmetros técnicos e aplica as fórmulas (material, energia, depreciação, risco, pós-processamento, markup e taxa de plataforma) retornando um objeto detalhado com custos e preço final.
@@ -40,7 +40,7 @@ Principais objetivos:
 
 O projeto pode ser testado com Cypress tanto no front-end quanto na API.
 
-Sugestão de organização:
+Estrutura dos testes:
 
 - `cypress/e2e/frontend/` — testes de UI para autenticação, orçamento, dashboard, catálogo, detalhamento e edição;
 - `cypress/e2e/api/` — testes de integração usando `cy.request()` para autenticação, cálculo e catálogo.
@@ -70,7 +70,7 @@ Pré-requisitos:
 1. Abra um terminal e instale dependências:
 
 ```bash
-cd "d:\workspace\Mentoria Testes\turma3\portfolio\labprice"
+cd labprice
 npm install
 ```
 
